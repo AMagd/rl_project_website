@@ -1,0 +1,46 @@
+---
+layout: default
+---
+
+<div class="home">
+
+  <!-- Optional hero/intro section goes here (e.g., project blurb, CTA buttons) -->
+
+  <div class="posts">
+    {% if paginator.posts == empty %}
+      <p class="post-summary">
+        <!-- Add Markdown files in _posts/ to replace this placeholder message -->
+        No updates yet. Create your first post in `_posts/` to see it listed here.
+      </p>
+    {% endif %}
+    {% for post in paginator.posts %}
+     {% if post.visible != false %}
+      <div class="post">
+        
+      <h1 class="h1 post-title">
+      <center>
+      <a href="{{ post.url | prepend: site.baseurl }}" class="post-link">{{ post.title }}</a>
+      </center>
+      </h1>
+      <p class="post-summary">
+
+      <h5><center> 
+      <span class="post-meta">{{ post.author }}</span>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <span class="post-meta">{{ post.date | date: site.date_format }}</span>
+      </center></h5>
+      <br>
+      {% if post.cover %}
+        <!-- Post-specific cover HTML defined in front matter -->
+        {{ post.cover }}
+      {% endif %}
+      {{ post.excerpt }} 
+      <a href="{{ post.url | prepend: site.baseurl }}">Continue</a>
+      </p>
+      </div>
+     {% endif %}
+    {% endfor %}
+  </div>
+
+  {% include pagination.html %}
+</div>
