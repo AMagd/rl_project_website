@@ -5,8 +5,8 @@
   <title>Discovering Diverse Motion Skills from Reference Motions with Physics-Based Characters</title>
 
   <!-- Bulma + your custom styles -->
-  <link rel="stylesheet" href="static/css/bulma.min.css" />
-  <link rel="stylesheet" href="static/css/index.css" />
+  <link rel="stylesheet" href="assets/css/bulma.min.css" />
+  <link rel="stylesheet" href="assets/css/index.css" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
@@ -43,7 +43,7 @@
     <div class="container has-text-centered">
       <!-- video autoplay muted loop no control -->
       <video autoplay muted loop width="50%">
-        <source src="static/images/teaser_cropped.mp4" type="video/mp4" />
+        <source src="assets/media/teaser_cropped.mp4" type="video/mp4" />
         Humanoid agents with diverse motion skills
       </video>
       <p class="is-size-6 has-text-grey">
@@ -80,7 +80,7 @@
       <div class="has-text-centered" style="margin-top:1.5rem;">
         <figure class="image">
           <!-- pipeline image 75% width centered -->
-          <img src="static/images/stages.jpg" style="width: 75%; margin: 0 auto;"
+          <img src="assets/media/stages.jpg" style="width: 75%; margin: 0 auto;"
               alt="Two-stage AMP + unsupervised skill discovery pipeline" />
         </figure>
         <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
@@ -115,10 +115,10 @@
             <h3 class="title is-5">Locomotion</h3>
             <!-- TODO: replace image -->
             <video autoplay muted loop width="75%">
-              <source src="static/images/locomotoin_dataset.mp4" type="video/mp4" />
+              <source src="assets/media/locomotoin_dataset.mp4" type="video/mp4" />
               Locomotion motions
             </video>
-            <!-- <img src="static/images/locomotion_dataset.png"
+            <!-- <img src="assets/media/locomotion_dataset.png"
                  alt="Locomotion motions" /> -->
             <p class="is-size-6" style="margin-top:0.5rem;">
               MimicKit locomotion clips (walking, running).
@@ -131,10 +131,10 @@
             <h3 class="title is-5">Multi-Behavior</h3>
             <!-- TODO: replace image -->
             <video autoplay muted loop width="75%">
-              <source src="static/images/multi_behavior_dataset.mp4" type="video/mp4" />
+              <source src="assets/media/multi_behavior_dataset.mp4" type="video/mp4" />
               Diverse motions
             </video>
-            <!-- <img src="static/images/multibehavior_dataset.png"
+            <!-- <img src="assets/media/multibehavior_dataset.png"
                  alt="Diverse motions" /> -->
             <p class="is-size-6" style="margin-top:0.5rem;">
               MimicKit multi-behavior clips (walking, dancing, crawling, punching, jumping).
@@ -163,7 +163,7 @@
             <h4 class="title is-5 has-text-centered">DIAYN: Diverse Gaits</h4>
             <!-- TODO: replace src -->
             <video autoplay muted loop width="100%">
-              <source src="static/images/DIAYN_gaits.mp4" type="video/mp4" />
+              <source src="assets/media/DIAYN_gaits.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
@@ -177,7 +177,7 @@
             <h4 class="title is-5 has-text-centered">METRA: Diverse Gaits</h4>
             <!-- TODO: replace src -->
             <video autoplay muted loop width="100%">
-              <source src="static/images/METRA_gaits.mp4" type="video/mp4" />
+              <source src="assets/media/METRA_gaits.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
@@ -191,7 +191,7 @@
             <h4 class="title is-5 has-text-centered">Latent Sweep (Single Agent)</h4>
             <!-- center the video -->
             <video autoplay muted loop width="50%" style="margin: 0 auto;">
-              <source src="static/images/one_agent_gait.mp4" type="video/mp4" />
+              <source src="assets/media/one_agent_gait.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
@@ -210,7 +210,7 @@
             <h4 class="title is-5 has-text-centered">Multi-Agent Skills</h4>
             <!-- TODO: replace src -->
             <video autoplay muted loop width="100%">
-              <source src="static/images/multi_behavior.mp4" type="video/mp4" />
+              <source src="assets/media/multi_behavior.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
@@ -225,7 +225,7 @@
             <h4 class="title is-5 has-text-centered">Latent Sweeps (Single Agent)</h4>
             <!-- TODO: replace src -->
             <video autoplay muted loop width="100%">
-              <source src="static/images/one_agent_multi_behavior.mp4" type="video/mp4" />
+              <source src="assets/media/one_agent_multi_behavior.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
@@ -240,7 +240,7 @@
             <h4 class="title is-5 has-text-centered">Overtraining Effect</h4>
             <!-- TODO: replace src -->
             <video autoplay muted loop width="50%" style="margin: 0 auto;">
-              <source src="static/images/overtraining.mp4" type="video/mp4" />
+              <source src="assets/media/overtraining.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
@@ -261,7 +261,7 @@
             <h4 class="title is-5 has-text-centered">Unsupervised Only (DIAYN / METRA without AMP)</h4>
             <!-- TODO: replace src -->
             <video autoplay muted loop width="50%" style="margin: 0 auto;">
-              <source src="static/images/unsupervised_rl.mp4" type="video/mp4" />
+              <source src="assets/media/unsupervised_rl.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
@@ -282,7 +282,7 @@
             <h5 class="title is-6 has-text-centered">Multi-Agent</h5>
             <!-- TODO: replace src -->
             <video autoplay muted loop width="100%">
-              <source src="static/images/stage_one_only.mp4" type="video/mp4" />
+              <source src="assets/media/stage_one_only.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
@@ -296,7 +296,7 @@
             <h5 class="title is-6 has-text-centered">Single Agent (Latent Sweep)</h5>
             <!-- TODO: replace src -->
             <video autoplay muted loop width="100%">
-              <source src="static/images/one_agent_stage_one_only.mp4" type="video/mp4" />
+              <source src="assets/media/one_agent_stage_one_only.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
@@ -318,7 +318,7 @@
             <h5 class="title is-6 has-text-centered">Multi-Agent</h5>
             <!-- TODO: replace src -->
             <video autoplay muted loop width="100%">
-              <source src="static/images/amp_plus_mi.mp4" type="video/mp4" />
+              <source src="assets/media/amp_plus_mi.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
@@ -333,7 +333,7 @@
             <h5 class="title is-6 has-text-centered">Single Agent (Latent Sweep)</h5>
             <!-- TODO: replace src -->
             <video autoplay muted loop width="100%">
-              <source src="static/images/one_agent_amp_plus_mi.mp4" type="video/mp4" />
+              <source src="assets/media/one_agent_amp_plus_mi.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
@@ -355,7 +355,7 @@
             <h5 class="title is-6 has-text-centered">Multi-Agent</h5>
             <!-- TODO: replace src -->
             <video autoplay muted loop width="100%">
-              <source src="static/images/awr_plus_diayn.mp4" type="video/mp4" />
+              <source src="assets/media/awr_plus_diayn.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
@@ -370,7 +370,7 @@
             <h5 class="title is-6 has-text-centered">Single Agent (Latent Sweep)</h5>
             <!-- TODO: replace src -->
             <video autoplay muted loop width="100%">
-              <source src="static/images/one_agent_awr_plus_diayn.mp4" type="video/mp4" />
+              <source src="assets/media/one_agent_awr_plus_diayn.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
@@ -419,6 +419,6 @@
   </footer>
 
   <!-- Your JS (optional) -->
-  <script src="static/js/index.js"></script>
+  <script src="assets/js/index.js"></script>
 </body>
 </html>
