@@ -1,46 +1,424 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Discovering Diverse Motion Skills from Reference Motions with Physics-Based Characters</title>
 
-<div class="home">
+  <!-- Bulma + your custom styles -->
+  <link rel="stylesheet" href="static/css/bulma.min.css" />
+  <link rel="stylesheet" href="static/css/index.css" />
 
-  <!-- Optional hero/intro section goes here (e.g., project blurb, CTA buttons) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
 
-  <div class="posts">
-    {% if paginator.posts == empty %}
-      <p class="post-summary">
-        <!-- Add Markdown files in _posts/ to replace this placeholder message -->
-        No updates yet. Create your first post in `_posts/` to see it listed here.
-      </p>
-    {% endif %}
-    {% for post in paginator.posts %}
-     {% if post.visible != false %}
-      <div class="post">
-        
-      <h1 class="h1 post-title">
-      <center>
-      <a href="{{ post.url | prepend: site.baseurl }}" class="post-link">{{ post.title }}</a>
-      </center>
-      </h1>
-      <p class="post-summary">
-
-      <h5><center> 
-      <span class="post-meta">{{ post.author }}</span>
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      <span class="post-meta">{{ post.date | date: site.date_format }}</span>
-      </center></h5>
-      <br>
-      {% if post.cover %}
-        <!-- Post-specific cover HTML defined in front matter -->
-        {{ post.cover }}
-      {% endif %}
-      {{ post.excerpt }} 
-      <a href="{{ post.url | prepend: site.baseurl }}">Continue</a>
-      </p>
+  <!-- Hero / Title -->
+  <section class="hero is-light is-fullwidth">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title is-2">
+          Discovering Diverse Motion Skills from Reference Motions<br/>
+          with Physics-Based Characters
+        </h1>
+        <h2 class="subtitle is-4">
+          Sun Woo Kim · Ahmed Magd · Max Qiushi Lin · Yizheng Xie
+        </h2>
+        <p class="is-size-6 has-text-grey">
+          SFU · CMPT 419/726 Reinforcement Learning · Course Project 2025
+        </p>
+        <p class="is-size-5" style="margin-top:0.75rem;">
+          <!-- TODO: update these links when ready -->
+          <a href="docs/final_report.pdf" target="_blank">[Report]</a>
+          &nbsp;·&nbsp;
+          <a href="https://github.com/your-repo-here" target="_blank">[Code]</a>
+          &nbsp;·&nbsp;
+          <a href="#results">[Results&nbsp;Videos]</a>
+        </p>
       </div>
-     {% endif %}
-    {% endfor %}
-  </div>
+    </div>
+  </section>
 
-  {% include pagination.html %}
-</div>
+  <!-- Teaser image -->
+  <section class="section" id="teaser">
+    <div class="container has-text-centered">
+      <!-- video autoplay muted loop no control -->
+      <video autoplay muted loop width="50%">
+        <source src="static/images/teaser_cropped.mp4" type="video/mp4" />
+        Humanoid agents with diverse motion skills
+      </video>
+      <p class="is-size-6 has-text-grey">
+        Teaser: Our method discovers diverse, human-like motion skills beyond the mocap clips.
+      </p>
+    </div>
+  </section>
+
+  <!-- Very short summary -->
+  <section class="section" id="summary">
+    <div class="container">
+      <h2 class="title is-3">Summary</h2>
+      <p class="is-size-5">
+        We study how to discover <strong>diverse humanoid skills</strong> from a small set of
+        <strong>reference motions</strong>. Our two-stage approach:
+      </p>
+      <ul class="is-size-5" style="margin-top:0.5rem;">
+        <li><strong>Stage 1:</strong> Adversarial Motion Prior (AMP) to imitate mocap clips.</li>
+        <li><strong>Stage 2:</strong> Unsupervised skill discovery (DIAYN / METRA) starting from the AMP policy.</li>
+      </ul>
+      <p class="is-size-5" style="margin-top:0.5rem;">
+        This lets us move <em>beyond</em> the dataset (new skills) while staying
+        <em>close</em> to natural human motion.
+      </p>
+    </div>
+  </section>
+
+  <!-- Method / Pipeline (very light text) -->
+  <section class="section" id="method">
+    <div class="container">
+      <h2 class="title is-3">Method</h2>
+
+      <!-- Full-width pipeline image below -->
+      <div class="has-text-centered" style="margin-top:1.5rem;">
+        <figure class="image">
+          <!-- pipeline image 75% width centered -->
+          <img src="static/images/stages.jpg" style="width: 75%; margin: 0 auto;"
+              alt="Two-stage AMP + unsupervised skill discovery pipeline" />
+        </figure>
+        <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
+          Two-stage pipeline: AMP pretraining (Stage 1) followed by unsupervised skill discovery (Stage 2).
+        </p>
+      </div>
+
+      <!-- Text block on top -->
+      <div class="content">
+        <p class="is-size-5">
+          We train a physics-based humanoid controller with:
+        </p>
+        <ul class="is-size-5" style="margin-top:0.5rem;">
+          <li><strong>AMP pretraining:</strong> match simulated poses to mocap.</li>
+          <li><strong>Latent skill variable</strong> <code>z</code> controlling style.</li>
+          <li><strong>DIAYN / METRA objective:</strong> maximize diversity over skills.</li>
+          <li><strong>Backbone RL:</strong> PPO, with experiments using AWR and SPMA.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Datasets (compact) -->
+  <section class="section" id="datasets">
+    <div class="container">
+      <h2 class="title is-3">Datasets Used</h2>
+
+      <div class="columns is-multiline">
+        <div class="column is-6">
+          <div class="box has-text-centered">
+            <h3 class="title is-5">Locomotion</h3>
+            <!-- TODO: replace image -->
+            <video autoplay muted loop width="75%">
+              <source src="static/images/locomotoin_dataset.mp4" type="video/mp4" />
+              Locomotion motions
+            </video>
+            <!-- <img src="static/images/locomotion_dataset.png"
+                 alt="Locomotion motions" /> -->
+            <p class="is-size-6" style="margin-top:0.5rem;">
+              MimicKit locomotion clips (walking, running).
+            </p>
+          </div>
+        </div>
+
+        <div class="column is-6">
+          <div class="box has-text-centered">
+            <h3 class="title is-5">Multi-Behavior</h3>
+            <!-- TODO: replace image -->
+            <video autoplay muted loop width="75%">
+              <source src="static/images/multi_behavior_dataset.mp4" type="video/mp4" />
+              Diverse motions
+            </video>
+            <!-- <img src="static/images/multibehavior_dataset.png"
+                 alt="Diverse motions" /> -->
+            <p class="is-size-6" style="margin-top:0.5rem;">
+              MimicKit multi-behavior clips (walking, dancing, crawling, punching, jumping).
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results: main section with short captions -->
+  <section class="section" id="results">
+    <div class="container">
+      <h2 class="title is-3">Results</h2>
+      <p class="is-size-5">
+        Below we show representative videos. Each row corresponds to one experiment
+        (multi-agent or single-agent with latent sweeps).
+      </p>
+
+      <!-- Locomotion Results -->
+      <h3 class="title is-4" style="margin-top:1.5rem;">Locomotion Dataset</h3>
+      <div class="columns is-multiline">
+
+        <div class="column is-6">
+          <div class="box">
+            <h4 class="title is-5 has-text-centered">DIAYN: Diverse Gaits</h4>
+            <!-- TODO: replace src -->
+            <video autoplay muted loop width="100%">
+              <source src="static/images/DIAYN_gaits.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
+              DIAYN produces diverse gaits, all agents start from the same state but different latents. We obtain gorilla-like walking, limping, and different speeds/directions.
+            </p>
+          </div>
+        </div>
+
+        <div class="column is-6">
+          <div class="box">
+            <h4 class="title is-5 has-text-centered">METRA: Diverse Gaits</h4>
+            <!-- TODO: replace src -->
+            <video autoplay muted loop width="100%">
+              <source src="static/images/METRA_gaits.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
+              METRA produces diverse gaits, all agents start from the same state but different latents. However, it shows a more jittery behavior compared to DIAYN.
+            </p>
+          </div>
+        </div>
+
+        <div class="column is-12">
+          <div class="box has-text-centered">
+            <h4 class="title is-5 has-text-centered">Latent Sweep (Single Agent)</h4>
+            <!-- center the video -->
+            <video autoplay muted loop width="50%" style="margin: 0 auto;">
+              <source src="static/images/one_agent_gait.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
+              A single agent switches latents on the fly, transitioning between different motion skills while keeping transitions smooth.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Multi-Behavior Results -->
+      <h3 class="title is-4" style="margin-top:1.5rem;">Multi-Behavior Dataset</h3>
+      <div class="columns is-multiline">
+
+        <div class="column is-6">
+          <div class="box">
+            <h4 class="title is-5 has-text-centered">Multi-Agent Skills</h4>
+            <!-- TODO: replace src -->
+            <video autoplay muted loop width="100%">
+              <source src="static/images/multi_behavior.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
+              Agents specialize in a subset of tasks (e.g., walking and dancing) and
+              vary style within those tasks.
+            </p>
+          </div>
+        </div>
+
+        <div class="column is-6">
+          <div class="box">
+            <h4 class="title is-5 has-text-centered">Latent Sweeps (Single Agent)</h4>
+            <!-- TODO: replace src -->
+            <video autoplay muted loop width="100%">
+              <source src="static/images/one_agent_multi_behavior.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
+              After standing up, different latents mix walking with dancing or punching,
+              creating hybrid motions not seen in a single reference clip.
+            </p>
+          </div>
+        </div>
+
+        <div class="column is-12">
+          <div class="box has-text-centered">
+            <h4 class="title is-5 has-text-centered">Overtraining Effect</h4>
+            <!-- TODO: replace src -->
+            <video autoplay muted loop width="50%" style="margin: 0 auto;">
+              <source src="static/images/overtraining.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
+              If the mutual-information term dominates for too long, skills drift away
+              from the mocap distribution and motions become exaggerated, but still show
+              traces of the original locomotion.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Ablations & Algorithms (expanded) -->
+      <h3 class="title is-4" style="margin-top:1.5rem;">Ablations &amp; Algorithms</h3>
+
+      <!-- Unsupervised only -->
+      <div class="columns is-multiline">
+        <div class="column is-12">
+          <div class="box has-text-centered">
+            <h4 class="title is-5 has-text-centered">Unsupervised Only (DIAYN / METRA without AMP)</h4>
+            <!-- TODO: replace src -->
+            <video autoplay muted loop width="50%" style="margin: 0 auto;">
+              <source src="static/images/unsupervised_rl.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
+              Intrinsic reward only: behaviors are highly diverse but visually unnatural and far from human motion.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- AMP only (Stage 1) -->
+      <div class="columns is-multiline" style="margin-top:0.75rem;">
+        <div class="column is-12">
+          <h4 class="title is-5">AMP Only (Stage 1)</h4>
+        </div>
+
+        <div class="column is-6">
+          <div class="box">
+            <h5 class="title is-6 has-text-centered">Multi-Agent</h5>
+            <!-- TODO: replace src -->
+            <video autoplay muted loop width="100%">
+              <source src="static/images/stage_one_only.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
+              Random initial states give the impression of multiple skills (walking vs. running, direction changes).
+            </p>
+          </div>
+        </div>
+
+        <div class="column is-6">
+          <div class="box">
+            <h5 class="title is-6 has-text-centered">Single Agent (Latent Sweep)</h5>
+            <!-- TODO: replace src -->
+            <video autoplay muted loop width="100%">
+              <source src="static/images/one_agent_stage_one_only.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
+              When we fix the initial state and resample latents, the behavior hardly changes:
+              AMP alone produces natural but almost non-diverse skills.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- AMP + MI (ASE-style one-stage) -->
+      <div class="columns is-multiline" style="margin-top:0.75rem;">
+        <div class="column is-12">
+          <h4 class="title is-5">AMP + MI (One-Stage, ASE-Style)</h4>
+        </div>
+
+        <div class="column is-6">
+          <div class="box">
+            <h5 class="title is-6 has-text-centered">Multi-Agent</h5>
+            <!-- TODO: replace src -->
+            <video autoplay muted loop width="100%">
+              <source src="static/images/amp_plus_mi.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
+              Combining AMP and MI from the start yields clearly different skills when sampling latents
+              from the same initial state.
+            </p>
+          </div>
+        </div>
+
+        <div class="column is-6">
+          <div class="box">
+            <h5 class="title is-6 has-text-centered">Single Agent (Latent Sweep)</h5>
+            <!-- TODO: replace src -->
+            <video autoplay muted loop width="100%">
+              <source src="static/images/one_agent_amp_plus_mi.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
+              Skills remain mostly inside the mocap distribution: good separation of behaviors,
+              but limited exploration beyond the data.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- AWR + DIAYN (Stage 2 alternative) -->
+      <div class="columns is-multiline" style="margin-top:0.75rem;">
+        <div class="column is-12">
+          <h4 class="title is-5">AWR + DIAYN (Stage 2 Finetuning)</h4>
+        </div>
+
+        <div class="column is-6">
+          <div class="box">
+            <h5 class="title is-6 has-text-centered">Multi-Agent</h5>
+            <!-- TODO: replace src -->
+            <video autoplay muted loop width="100%">
+              <source src="static/images/awr_plus_diayn.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
+              Compared to PPO, AWR spreads motion changes over more joints and shows slightly richer variation
+              across agents.
+            </p>
+          </div>
+        </div>
+
+        <div class="column is-6">
+          <div class="box">
+            <h5 class="title is-6 has-text-centered">Single Agent (Latent Sweep)</h5>
+            <!-- TODO: replace src -->
+            <video autoplay muted loop width="100%">
+              <source src="static/images/one_agent_awr_plus_diayn.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
+              For a fixed agent, most variation appears in running speed and direction rather than completely
+              different styles.
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+  <!-- Tiny conclusion + BibTeX -->
+  <section class="section" id="conclusion">
+    <div class="container">
+      <h2 class="title is-3">Takeaways</h2>
+      <p class="is-size-5">
+        Our two-stage approach expands physics-based motor skills
+        <strong>beyond</strong> the mocap dataset while keeping motions
+        <strong>human-like</strong>. AMP anchors realism; DIAYN / METRA and
+        alternative RL updates introduce diversity.
+      </p>
+    </div>
+  </section>
+
+  <!-- <section class="section" id="bibtex">
+    <div class="container">
+      <h2 class="title is-3">BibTeX</h2>
+      <pre>
+@misc{kim2025discovering,
+  title  = {Discovering Diverse Motion Skills from Reference Motions with Physics-Based Characters},
+  author = {Kim, Sun Woo and Magd, Ahmed and Lin, Max Qiushi and Xie, Yizheng},
+  note   = {SFU CMPT 419/726 Reinforcement Learning Course Project},
+  year   = {2025}
+}
+      </pre>
+    </div>
+  </section> -->
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        RL Course Project 2025
+      </p>
+    </div>
+  </footer>
+
+  <!-- Your JS (optional) -->
+  <script src="static/js/index.js"></script>
+</body>
+</html>
