@@ -9,6 +9,73 @@
   <link rel="stylesheet" href="assets/css/index.css" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Simple visual separation for sections -->
+  <style>
+    body {
+      background-color: #f9f9f9;
+    }
+
+    section.section {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+
+    /* Main section titles (Summary, Method, Datasets, Results, Takeaways) */
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.25rem;
+      font-weight: 700;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 70px;
+      height: 3px;
+      background: #d24747; /* Bulma primary */
+      border-radius: 999px;
+    }
+
+    /* Subsection titles inside Results */
+    .subsection-title {
+      position: relative;
+      display: inline-block;
+      margin-top: 1.25rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.2rem;
+      font-weight: 600;
+    }
+
+    .subsection-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background: #811717;
+      border-radius: 999px;
+    }
+
+    /* Card-like groups inside Results to clearly separate subsections */
+    .results-group {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.5rem 1.5rem 1.75rem;
+      margin-top: 1.75rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+      border: 1px solid #e8e8e8;
+    }
+
+    video {
+      border-radius: 8px;
+    }
+  </style>
 </head>
 <body>
 
@@ -55,7 +122,7 @@
   <!-- Very short summary -->
   <section class="section" id="summary">
     <div class="container">
-      <h2 class="title is-3">Summary</h2>
+      <h2 class="title is-3 section-title">Summary</h2>
       <p class="is-size-5">
         We study how to discover <strong>diverse humanoid skills</strong> from a small set of
         <strong>reference motions</strong>. Our two-stage approach:
@@ -74,7 +141,7 @@
   <!-- Method / Pipeline (very light text) -->
   <section class="section" id="method">
     <div class="container">
-      <h2 class="title is-3">Method</h2>
+      <h2 class="title is-3 section-title">Method</h2>
 
       <!-- Full-width pipeline image below -->
       <div class="has-text-centered" style="margin-top:1.5rem;">
@@ -107,7 +174,7 @@
   <!-- Datasets (compact) -->
   <section class="section" id="datasets">
     <div class="container">
-      <h2 class="title is-3">Datasets Used</h2>
+      <h2 class="title is-3 section-title">Datasets Used</h2>
 
       <div class="columns is-multiline">
         <div class="column is-6">
@@ -148,310 +215,319 @@
   <!-- Results: main section with short captions -->
   <section class="section" id="results">
     <div class="container">
-      <h2 class="title is-3">Results</h2>
+      <h2 class="title is-3 section-title">Results</h2>
       <p class="is-size-5">
         Below we show representative videos. Each row corresponds to one experiment
         (multi-agent or single-agent with latent sweeps).
       </p>
 
       <!-- Locomotion Results -->
-      <h3 class="title is-4" style="margin-top:1.5rem;">Locomotion Dataset</h3>
-      <div class="columns is-multiline">
+      <div class="results-group">
+        <h3 class="title is-4 subsection-title">Results on Locomotion Dataset</h3>
+        <div class="columns is-multiline">
 
-        <div class="column is-6">
-          <div class="box">
-            <h4 class="title is-5 has-text-centered">DIAYN: Diverse Gaits</h4>
-            <!-- TODO: replace src -->
-            <video autoplay muted loop width="100%">
-              <source src="assets/media/DIAYN_gaits.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
-              DIAYN produces diverse gaits, all agents start from the same state but different latents. We obtain gorilla-like walking, limping, and different speeds/directions.
-            </p>
+          <div class="column is-6">
+            <div class="box">
+              <h4 class="title is-5 has-text-centered">DIAYN: Diverse Gaits</h4>
+              <!-- TODO: replace src -->
+              <video autoplay muted loop width="100%">
+                <source src="assets/media/DIAYN_gaits.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
+                DIAYN produces diverse gaits, all agents start from the same state but different latents. We obtain gorilla-like walking, limping, and different speeds/directions.
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div class="column is-6">
-          <div class="box">
-            <h4 class="title is-5 has-text-centered">METRA: Diverse Gaits</h4>
-            <!-- TODO: replace src -->
-            <video autoplay muted loop width="100%">
-              <source src="assets/media/METRA_gaits.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
-              METRA produces diverse gaits, all agents start from the same state but different latents. However, it shows a more jittery behavior compared to DIAYN.
-            </p>
+          <div class="column is-6">
+            <div class="box">
+              <h4 class="title is-5 has-text-centered">METRA: Diverse Gaits</h4>
+              <!-- TODO: replace src -->
+              <video autoplay muted loop width="100%">
+                <source src="assets/media/METRA_gaits.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
+                METRA produces diverse gaits, all agents start from the same state but different latents. However, it shows a more jittery behavior compared to DIAYN.
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div class="column is-12">
-          <div class="box has-text-centered">
-            <h4 class="title is-5 has-text-centered">Latent Sweep (Single Agent)</h4>
-            <!-- center the video -->
-            <video autoplay muted loop width="50%" style="margin: 0 auto;">
-              <source src="assets/media/one_agent_gait.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
-              A single agent switches latents on the fly, transitioning between different motion skills while keeping transitions smooth.
-            </p>
+          <div class="column is-12">
+            <div class="box has-text-centered">
+              <h4 class="title is-5 has-text-centered">Latent Sweep (Single Agent)</h4>
+              <!-- center the video -->
+              <video autoplay muted loop width="50%" style="margin: 0 auto;">
+                <source src="assets/media/one_agent_gait.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
+                A single agent switches latents on the fly, transitioning between different motion skills while keeping transitions smooth.
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Multi-Behavior Results -->
-      <h3 class="title is-4" style="margin-top:1.5rem;">Multi-Behavior Dataset</h3>
-      <div class="columns is-multiline">
+      <div class="results-group">
+        <h3 class="title is-4 subsection-title">Results on Multi-Behavior Dataset</h3>
+        <div class="columns is-multiline">
 
-        <div class="column is-6">
-          <div class="box">
-            <h4 class="title is-5 has-text-centered">Multi-Agent Skills</h4>
-            <!-- TODO: replace src -->
-            <video autoplay muted loop width="100%">
-              <source src="assets/media/multi_behavior.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
-              Agents specialize in a subset of tasks (e.g., walking and dancing) and
-              vary style within those tasks.
-            </p>
+          <div class="column is-6">
+            <div class="box">
+              <h4 class="title is-5 has-text-centered">Multi-Agent Skills</h4>
+              <!-- TODO: replace src -->
+              <video autoplay muted loop width="100%">
+                <source src="assets/media/multi_behavior.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
+                Agents specialize in a subset of tasks (e.g., walking and dancing) and
+                vary style within those tasks.
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div class="column is-6">
-          <div class="box">
-            <h4 class="title is-5 has-text-centered">Latent Sweeps (Single Agent)</h4>
-            <!-- TODO: replace src -->
-            <video autoplay muted loop width="100%">
-              <source src="assets/media/one_agent_multi_behavior.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
-              After standing up, different latents mix walking with dancing or punching,
-              creating hybrid motions not seen in a single reference clip.
-            </p>
+          <div class="column is-6">
+            <div class="box">
+              <h4 class="title is-5 has-text-centered">Latent Sweeps (Single Agent)</h4>
+              <!-- TODO: replace src -->
+              <video autoplay muted loop width="100%">
+                <source src="assets/media/one_agent_multi_behavior.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
+                After standing up, different latents mix walking with dancing or punching,
+                creating hybrid motions not seen in a single reference clip.
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div class="column is-12">
-          <div class="box has-text-centered">
-            <h4 class="title is-5 has-text-centered">Overtraining Effect</h4>
-            <!-- TODO: replace src -->
-            <video autoplay muted loop width="50%" style="margin: 0 auto;">
-              <source src="assets/media/overtraining.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
-              If the mutual-information term dominates for too long, skills drift away
-              from the mocap distribution and motions become exaggerated, but still show
-              traces of the original locomotion.
-            </p>
+          <div class="column is-12">
+            <div class="box has-text-centered">
+              <h4 class="title is-5 has-text-centered">Overtraining Effect</h4>
+              <!-- TODO: replace src -->
+              <video autoplay muted loop width="50%" style="margin: 0 auto;">
+                <source src="assets/media/overtraining.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
+                If the mutual-information term dominates for too long, skills drift away
+                from the mocap distribution and motions become exaggerated, but still show
+                traces of the original locomotion.
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- High-Level Steering Controller -->
-      <h3 class="title is-4" style="margin-top:1.5rem;">High-Level Steering Controller</h3>
-      <p class="is-size-5">
-        We also test a simple high-level controller that asks the humanoid to
-        steer toward a red target on the ground. The low-level policy comes
-        from each model (ASE, DIAYN, METRA, AWR).
-      </p>
+      <div class="results-group">
+        <h3 class="title is-4 subsection-title">High-Level Steering Controller</h3>
+        <p class="is-size-5">
+          We also test a simple high-level controller that asks the humanoid to
+          steer toward a red target on the ground. The low-level policy comes
+          from each model (ASE, DIAYN, METRA, AWR).
+        </p>
 
-      <div class="columns is-multiline" style="margin-top:1rem;">
+        <div class="columns is-multiline" style="margin-top:1rem;">
 
-        <div class="column is-6">
-          <div class="box has-text-centered">
-            <h4 class="title is-6">ASE (baseline)</h4>
-            <video autoplay muted loop width="100%">
-              <source src="assets/media/steer_ase.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <p class="is-size-7 has-text-grey">
-              Tracks the red target most accurately with natural motion.
-            </p>
+          <div class="column is-6">
+            <div class="box has-text-centered">
+              <h4 class="title is-6">ASE (baseline)</h4>
+              <video autoplay muted loop width="100%">
+                <source src="assets/media/steer_ase.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="is-size-7 has-text-grey">
+                Tracks the red target most accurately with natural motion.
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div class="column is-6">
-          <div class="box has-text-centered">
-            <h4 class="title is-6">DIAYN (ours)</h4>
-            <video autoplay muted loop width="100%">
-              <source src="assets/media/steer_diayn.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <p class="is-size-7 has-text-grey">
-              Moves toward the target, but less precise than ASE.
-            </p>
+          <div class="column is-6">
+            <div class="box has-text-centered">
+              <h4 class="title is-6">DIAYN (ours)</h4>
+              <video autoplay muted loop width="100%">
+                <source src="assets/media/steer_diayn.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="is-size-7 has-text-grey">
+                Moves toward the target, but less precise than ASE.
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div class="column is-6">
-          <div class="box has-text-centered">
-            <h4 class="title is-6">METRA (ours)</h4>
-            <video autoplay muted loop width="100%">
-              <source src="assets/media/steer_metra.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <p class="is-size-7 has-text-grey">
-              Behaves somewhat similar to DIAYN with a different style.
-            </p>
+          <div class="column is-6">
+            <div class="box has-text-centered">
+              <h4 class="title is-6">METRA (ours)</h4>
+              <video autoplay muted loop width="100%">
+                <source src="assets/media/steer_metra.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="is-size-7 has-text-grey">
+                Behaves somewhat similar to DIAYN with a different style.
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div class="column is-6">
-          <div class="box has-text-centered">
-            <h4 class="title is-6">AWR (Alternative RL Backbone)</h4>
-            <video autoplay muted loop width="100%">
-              <source src="assets/media/steer_awr.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <p class="is-size-7 has-text-grey">
-              Locomotion that can steer to the ball but still less precise.
-            </p>
+          <div class="column is-6">
+            <div class="box has-text-centered">
+              <h4 class="title is-6">AWR (Alternative RL Backbone)</h4>
+              <video autoplay muted loop width="100%">
+                <source src="assets/media/steer_awr.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="is-size-7 has-text-grey">
+                Locomotion that can steer to the ball but still less precise.
+              </p>
+            </div>
           </div>
-        </div>
 
+        </div>
       </div>
-
       
       <!-- Ablations & Algorithms (expanded) -->
-      <h3 class="title is-4" style="margin-top:1.5rem;">Ablations &amp; Algorithms</h3>
+      <div class="results-group">
+        <h3 class="title is-4 subsection-title">Ablations</h3>
 
-      <!-- Unsupervised only -->
-      <div class="columns is-multiline">
-        <div class="column is-12">
-          <div class="box has-text-centered">
-            <h4 class="title is-5 has-text-centered">Unsupervised Only (DIAYN / METRA without AMP)</h4>
-            <!-- TODO: replace src -->
-            <video autoplay muted loop width="50%" style="margin: 0 auto;">
-              <source src="assets/media/unsupervised_rl.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
-              Intrinsic reward only: behaviors are highly diverse but visually unnatural and far from human motion.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- AMP only (Stage 1) -->
-      <div class="columns is-multiline" style="margin-top:0.75rem;">
-        <div class="column is-12">
-          <h4 class="title is-5">AMP Only (Stage 1)</h4>
-        </div>
-
-        <div class="column is-6">
-          <div class="box">
-            <h5 class="title is-6 has-text-centered">Multi-Agent</h5>
-            <!-- TODO: replace src -->
-            <video autoplay muted loop width="100%">
-              <source src="assets/media/stage_one_only.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
-              Random initial states give the impression of multiple skills (walking vs. running, direction changes).
-            </p>
+        <!-- Unsupervised only -->
+        <div class="columns is-multiline">
+          <div class="column is-12">
+            <div class="box has-text-centered">
+              <h4 class="title is-5 has-text-centered">Unsupervised Only (DIAYN / METRA without AMP)</h4>
+              <!-- TODO: replace src -->
+              <video autoplay muted loop width="50%" style="margin: 0 auto;">
+                <source src="assets/media/unsupervised_rl.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
+                Intrinsic reward only: behaviors are highly diverse but visually unnatural and far from human motion.
+              </p>
+            </div>
           </div>
         </div>
 
-        <div class="column is-6">
-          <div class="box">
-            <h5 class="title is-6 has-text-centered">Single Agent (Latent Sweep)</h5>
-            <!-- TODO: replace src -->
-            <video autoplay muted loop width="100%">
-              <source src="assets/media/one_agent_stage_one_only.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
-              When we fix the initial state and resample latents, the behavior hardly changes:
-              AMP alone produces natural but almost non-diverse skills.
-            </p>
+        <!-- AMP only (Stage 1) -->
+        <div class="columns is-multiline" style="margin-top:0.75rem;">
+          <div class="column is-12">
+            <h4 class="title is-5">AMP Only (Stage 1)</h4>
           </div>
-        </div>
-      </div>
 
-      <!-- AMP + MI (ASE-style one-stage) -->
-      <div class="columns is-multiline" style="margin-top:0.75rem;">
-        <div class="column is-12">
-          <h4 class="title is-5">AMP + MI (One-Stage, ASE-Style)</h4>
-        </div>
-
-        <div class="column is-6">
-          <div class="box">
-            <h5 class="title is-6 has-text-centered">Multi-Agent</h5>
-            <!-- TODO: replace src -->
-            <video autoplay muted loop width="100%">
-              <source src="assets/media/amp_plus_mi.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
-              Combining AMP and MI from the start yields clearly different skills when sampling latents
-              from the same initial state.
-            </p>
+          <div class="column is-6">
+            <div class="box">
+              <h5 class="title is-6 has-text-centered">Multi-Agent</h5>
+              <!-- TODO: replace src -->
+              <video autoplay muted loop width="100%">
+                <source src="assets/media/stage_one_only.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
+                Random initial states give the impression of multiple skills (walking vs. running, direction changes).
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div class="column is-6">
-          <div class="box">
-            <h5 class="title is-6 has-text-centered">Single Agent (Latent Sweep)</h5>
-            <!-- TODO: replace src -->
-            <video autoplay muted loop width="100%">
-              <source src="assets/media/one_agent_amp_plus_mi.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
-              Skills remain mostly inside the mocap distribution: good separation of behaviors,
-              but limited exploration beyond the data.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- AWR + DIAYN (Stage 2 alternative) -->
-      <div class="columns is-multiline" style="margin-top:0.75rem;">
-        <div class="column is-12">
-          <h4 class="title is-5">AWR + DIAYN (Stage 2 Finetuning)</h4>
-        </div>
-
-        <div class="column is-6">
-          <div class="box">
-            <h5 class="title is-6 has-text-centered">Multi-Agent</h5>
-            <!-- TODO: replace src -->
-            <video autoplay muted loop width="100%">
-              <source src="assets/media/awr_plus_diayn.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
-              Compared to PPO, AWR spreads motion changes over more joints and shows slightly richer variation
-              across agents.
-            </p>
+          <div class="column is-6">
+            <div class="box">
+              <h5 class="title is-6 has-text-centered">Single Agent (Latent Sweep)</h5>
+              <!-- TODO: replace src -->
+              <video autoplay muted loop width="100%">
+                <source src="assets/media/one_agent_stage_one_only.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
+                When we fix the initial state and resample latents, the behavior hardly changes:
+                AMP alone produces natural but almost non-diverse skills.
+              </p>
+            </div>
           </div>
         </div>
 
-        <div class="column is-6">
-          <div class="box">
-            <h5 class="title is-6 has-text-centered">Single Agent (Latent Sweep)</h5>
-            <!-- TODO: replace src -->
-            <video autoplay muted loop width="100%">
-              <source src="assets/media/one_agent_awr_plus_diayn.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
-              For a fixed agent, most variation appears in running speed and direction rather than completely
-              different styles.
-            </p>
+        <!-- AMP + MI (ASE-style one-stage) -->
+        <div class="columns is-multiline" style="margin-top:0.75rem;">
+          <div class="column is-12">
+            <h4 class="title is-5">AMP + MI (One-Stage, ASE-Style)</h4>
+          </div>
+
+          <div class="column is-6">
+            <div class="box">
+              <h5 class="title is-6 has-text-centered">Multi-Agent</h5>
+              <!-- TODO: replace src -->
+              <video autoplay muted loop width="100%">
+                <source src="assets/media/amp_plus_mi.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
+                Combining AMP and MI from the start yields clearly different skills when sampling latents
+                from the same initial state.
+              </p>
+            </div>
+          </div>
+
+          <div class="column is-6">
+            <div class="box">
+              <h5 class="title is-6 has-text-centered">Single Agent (Latent Sweep)</h5>
+              <!-- TODO: replace src -->
+              <video autoplay muted loop width="100%">
+                <source src="assets/media/one_agent_amp_plus_mi.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
+                Skills remain mostly inside the mocap distribution: good separation of behaviors,
+                but limited exploration beyond the data.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
 
+        <!-- AWR + DIAYN (Stage 2 alternative) -->
+        <div class="columns is-multiline" style="margin-top:0.75rem;">
+          <div class="column is-12">
+            <h4 class="title is-5">AWR + DIAYN (Stage 2 Finetuning)</h4>
+          </div>
+
+          <div class="column is-6">
+            <div class="box">
+              <h5 class="title is-6 has-text-centered">Multi-Agent</h5>
+              <!-- TODO: replace src -->
+              <video autoplay muted loop width="100%">
+                <source src="assets/media/awr_plus_diayn.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
+                Compared to PPO, AWR spreads motion changes over more joints and shows slightly richer variation
+                across agents.
+              </p>
+            </div>
+          </div>
+
+          <div class="column is-6">
+            <div class="box">
+              <h5 class="title is-6 has-text-centered">Single Agent (Latent Sweep)</h5>
+              <!-- TODO: replace src -->
+              <video autoplay muted loop width="100%">
+                <source src="assets/media/one_agent_awr_plus_diayn.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
+                For a fixed agent, most variation appears in running speed and direction rather than completely
+                different styles.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div> <!-- end results-group Ablations -->
+
+    </div>
+  </section>
 
   <!-- Tiny conclusion + BibTeX -->
   <section class="section" id="conclusion">
     <div class="container">
-      <h2 class="title is-3">Takeaways</h2>
+      <h2 class="title is-3 section-title">Takeaways</h2>
       <p class="is-size-5">
         Our two-stage approach expands physics-based motor skills
         <strong>beyond</strong> the mocap dataset while keeping motions
@@ -460,20 +536,6 @@
       </p>
     </div>
   </section>
-
-  <!-- <section class="section" id="bibtex">
-    <div class="container">
-      <h2 class="title is-3">BibTeX</h2>
-      <pre>
-@misc{kim2025discovering,
-  title  = {Discovering Diverse Motion Skills from Reference Motions with Physics-Based Characters},
-  author = {Kim, Sun Woo and Magd, Ahmed and Lin, Max Qiushi and Xie, Yizheng},
-  note   = {SFU CMPT 419/726 Reinforcement Learning Course Project},
-  year   = {2025}
-}
-      </pre>
-    </div>
-  </section> -->
 
   <!-- Footer -->
   <footer class="footer">
