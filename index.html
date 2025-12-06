@@ -251,6 +251,84 @@
           </div>
         </div>
       </div>
+
+      <!-- High-Level Steering Controller -->
+      <h3 class="title is-4" style="margin-top:1.5rem;">High-Level Steering Controller</h3>
+      <p class="is-size-5">
+        To test whether our learned skills are useful for downstream control, we add a
+        simple high-level controller that asks the humanoid to steer toward a red
+        half-spherical target on the ground. The low-level policy comes from each model
+        (ASE, DIAYN, METRA, AWR), while the high-level controller only issues
+        coarse steering commands.
+      </p>
+      <p class="is-size-6 has-text-grey" style="margin-top:0.5rem;">
+        ASE achieves the most accurate target following. Our DIAYN / METRA and AWR
+        variants produce more stylized motions that can still move toward the target,
+        but their tracking accuracy is weaker and would benefit from further tuning.
+      </p>
+
+      <div class="columns is-multiline" style="margin-top:1rem;">
+
+        <div class="column is-6">
+          <div class="box has-text-centered">
+            <h4 class="title is-5">ASE (baseline)</h4>
+            <video autoplay muted loop width="100%">
+              <source src="assets/media/steer_ase.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
+              ASE serves as the strongest baseline: the agent tracks the red target
+              reliably with smooth, natural locomotion.
+            </p>
+          </div>
+        </div>
+
+        <div class="column is-6">
+          <div class="box has-text-centered">
+            <h4 class="title is-5">DIAYN (ours, Stage&nbsp;2)</h4>
+            <video autoplay muted loop width="100%">
+              <source src="assets/media/steer_diayn.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
+              DIAYN-based skills show stylized, sometimes limping gaits that can steer
+              toward the target, but with less precise tracking than ASE.
+            </p>
+          </div>
+        </div>
+
+        <div class="column is-6">
+          <div class="box has-text-centered">
+            <h4 class="title is-5">METRA (ours, Stage&nbsp;2)</h4>
+            <video autoplay muted loop width="100%">
+              <source src="assets/media/steer_metra.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
+              METRA discovers rhythmic / dance-like motions that partially follow the
+              target, but jittery behavior makes accurate steering harder.
+            </p>
+          </div>
+        </div>
+
+        <div class="column is-6">
+          <div class="box has-text-centered">
+            <h4 class="title is-5">AWR (alternative optimizer)</h4>
+            <video autoplay muted loop width="100%">
+              <source src="assets/media/steer_awr.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
+              AWR produces smooth, slightly more varied locomotion than PPO-based
+              training, and can steer toward the red ball, though still behind ASE
+              in accuracy.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+
       <!-- Ablations & Algorithms (expanded) -->
       <h3 class="title is-4" style="margin-top:1.5rem;">Ablations &amp; Algorithms</h3>
 
