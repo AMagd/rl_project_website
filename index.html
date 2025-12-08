@@ -517,6 +517,39 @@
             </div>
           </div>
         </div>
+
+        <div class="columns is-multiline" style="margin-top:0.75rem;">
+          <div class="column is-12">
+            <h4 class="title is-5">SPMA + DIAYN (Stage 2 Finetuning)</h4>
+          </div>
+
+          <div class="column is-6">
+            <div class="box">
+              <h5 class="title is-6 has-text-centered">Multi-Agent</h5>
+              <video autoplay muted loop width="100%">
+                <source src="assets/media/spma.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
+                It seems that SPMA produces data-oriented skills that stay close to the mocap motion, with limited exploration in style.
+              </p>
+            </div>
+          </div>
+
+          <div class="column is-6">
+            <div class="box">
+              <h5 class="title is-6 has-text-centered">Single Agent (Latent Sweep)</h5>
+              <video autoplay muted loop width="100%">
+                <source src="assets/media/one_agent_spma.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="is-size-7 has-text-grey" style="margin-top:0.5rem;">
+                Sweeping latents barely changes the style; we mainly see tiny tweaks in speed or heading instead of distinct new skills.
+              </p>
+            </div>
+          </div>
+        </div>
+
       </div> <!-- end results-group Ablations -->
 
     </div>
